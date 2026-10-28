@@ -1,7 +1,18 @@
 <?php
-// Carregue as classes usando require_once.
-// Crie um objeto Carro e um objeto Moto com os dados indicados no enunciado.
-require_once "./src"
+require_once "src/veiculo.php";
+require_once  "src/carro.php";
+require_once "src/moto.php";
+
+
+
+$carro = new Carro('Toyota', 'Corolla', 2022, 150.00, 4);
+$moto = new Moto('Honda', 'CB 500', 2023, 70.00, 500);
+
+$total = $carro->calcularDiaria(5);
+
+$total = $moto->calcularDiaria(5);
+
+$formatarDiaria = static fn (float $valor): string => number_format($valor, 2, ',', '.');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -9,7 +20,7 @@ require_once "./src"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de veículos</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <header class="cabecalho">
@@ -23,37 +34,37 @@ require_once "./src"
                 <span class="tipo">Carro</span>
                 
                 <h2>
-                    <!-- Exiba marca e modelo do carro -->
+                    <?= $carro->getMarca(). ' ' .$carro->getModelo()?>
                 </h2>
                 
                 <p class="detalhe">
-                    Ano: <!-- Exiba o ano -->
+                    Ano: <?= $carro->getAno() ?>
                 </p>
                 
                 <p class="detalhe">
-                    Portas: <!-- Exiba a quantidade de portas -->
+                    Portas: <?= $carro->getPortas() ?>
                 </p>
                 
                 <p class="preco">
-                    Diária: R$ <!-- Exiba a diária formatada com duas casas decimais -->
+                    Diária: R$ <?= $formatarDiaria($carro->getDiaria()) ?>
                 </p>
             </article>
 
             <article class="cartao">
                 <span class="tipo">Moto</span>
                 <h2>
-                    <!-- Exiba marca e modelo da moto -->
+                    <?= $moto->getMarca() . ' ' . $moto->getModelo() ?>
                 </h2>
 
                 <p class="detalhe">
-                    Ano: <!-- Exiba o ano -->
+                    Ano: <?= $moto->getAno() ?>
                 </p>
                 
                 <p class="detalhe">
-                    Cilindradas: <!-- Exiba as cilindradas -->
+                    Cilindradas: <?= $moto->getCilindradas() ?> cc
                 </p>
                 <p class="preco">
-                    Diária: R$ <!-- Exiba a diária formatada com duas casas decimais -->
+                    Diária: R$ <?= $formatarDiaria($moto->getDiaria()) ?>
                 </p>
             </article>
         </section>
