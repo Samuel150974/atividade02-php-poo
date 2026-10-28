@@ -1,6 +1,7 @@
 <?php
 // Carregue as classes usando require_once.
 // Crie um objeto Carro e um objeto Moto com os dados indicados no enunciado.
+require_once "./src"
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
